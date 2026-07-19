@@ -5,9 +5,9 @@ export const CARD = {
 
   RADIUS: 170,
 
-  START_ANGLE: 225,
+  START_ANGLE: 135,
 
-  END_ANGLE: 495,
+  END_ANGLE: 405,
 
   MIN_TEMP: 18,
 
