@@ -28,6 +28,13 @@ export class ThermostatHorseshoeCard extends LitElement {
       stroke-linecap: round;
     }
 
+    .active {
+    stroke: #ffd362;
+    stroke-width: 16;
+    fill: none;
+    stroke-linecap: round;
+    }
+
     .value {
       fill: #303030;
       font-size: 52px;
@@ -60,6 +67,14 @@ export class ThermostatHorseshoeCard extends LitElement {
       405
     );
 
+    const activePath = this.describeArc(
+    250,
+    250,
+    170,
+    210,
+    300
+    );
+
     return html`
 
       <div class="card">
@@ -75,6 +90,11 @@ export class ThermostatHorseshoeCard extends LitElement {
             d="${path}"
           />
 
+          <path
+            class="active"
+            d="${activePath}"
+          />
+        
           <text
             class="value"
             x="250"
