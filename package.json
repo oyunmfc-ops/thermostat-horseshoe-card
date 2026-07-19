@@ -1,16 +1,18 @@
 {
   "name": "thermostat-horseshoe-card",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Modern Home Assistant thermostat horseshoe card",
   "type": "module",
   "scripts": {
-    "build": "vite build",
-    "dev": "vite"
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "lit": "^3.2.0"
   },
   "devDependencies": {
-    "@types/node": "^22.0.0",
-    "lit": "^3.2.0",
     "typescript": "^5.8.0",
-    "vite": "^6.0.0"
+    "vite": "^7.0.0",
+    "@types/node": "^24.0.0"
   }
 }
