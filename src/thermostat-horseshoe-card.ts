@@ -63,16 +63,16 @@ export class ThermostatHorseshoeCard extends LitElement {
       250,
       250,
       170,
-      135,
-      405
+      225,
+      495
     );
 
     const activePath = this.describeArc(
     250,
     250,
     170,
-    210,
-    300
+    255,
+    345
     );
 
     return html`
