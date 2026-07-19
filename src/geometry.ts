@@ -104,7 +104,7 @@ export function describeArc(
     A ${radius} ${radius}
       0
       ${largeArc}
-      1
+      0
       ${end.x}
       ${end.y}
   `;
