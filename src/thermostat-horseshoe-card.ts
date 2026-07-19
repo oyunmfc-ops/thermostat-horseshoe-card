@@ -1,10 +1,8 @@
 import { LitElement, html, css, svg } from "lit";
 import { customElement } from "lit/decorators.js";
+
+import { describeArc } from "./geometry";
 import { CARD } from "./constants";
-import {
-  describeArc,
-  temperatureToAngle
-} from "./geometry";
 
 @customElement("thermostat-horseshoe-card")
 export class ThermostatHorseshoeCard extends LitElement {
@@ -73,9 +71,9 @@ export class ThermostatHorseshoeCard extends LitElement {
     );
 
     const activePath = describeArc(
-      CENTER_X,
-      CENTER_Y,
-      RADIUS,
+      CARD.CENTER_X,
+      CARD.CENTER_Y,
+      CARD.RADIUS,
       255,
       345
     );
