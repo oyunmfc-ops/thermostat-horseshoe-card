@@ -81,23 +81,22 @@ export function describeArc(
   endAngle: number
 ): string {
 
-  const start = pointOnArc(
-    cx,
-    cy,
-    radius,
-    startAngle
-  );
-
-  const end = pointOnArc(
+  const start = polarToCartesian(
     cx,
     cy,
     radius,
     endAngle
   );
 
-  const delta = endAngle - startAngle;
+  const end = polarToCartesian(
+    cx,
+    cy,
+    radius,
+    startAngle
+  );
 
-  const largeArc = delta > 180 ? 1 : 0;
+  const largeArc =
+    endAngle - startAngle <= 180 ? 0 : 1;
 
   return `
     M ${start.x} ${start.y}
