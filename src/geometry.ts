@@ -33,7 +33,7 @@ export function polarToCartesian(
   angle: number
 ): Point {
 
-  const rad = degToRad(angle - 90);
+  const rad = degToRad(angle);
 
   return {
     x: cx + radius * Math.cos(rad),
