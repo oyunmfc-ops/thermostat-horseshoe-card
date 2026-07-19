@@ -3,14 +3,6 @@ export interface Point {
   y: number;
 }
 
-export function deg2rad(deg: number): number {
-  return (deg * Math.PI) / 180;
-}
-
-export function rad2deg(rad: number): number {
-  return (rad * 180) / Math.PI;
-}
-
 export function polarToCartesian(
   cx: number,
   cy: number,
@@ -18,22 +10,73 @@ export function polarToCartesian(
   angle: number
 ): Point {
 
-  const r = deg2rad(angle);
+  const rad = (angle - 90) * Math.PI / 180;
 
   return {
-    x: cx + radius * Math.cos(r),
-    y: cy + radius * Math.sin(r),
+    x: cx + radius * Math.cos(rad),
+    y: cy + radius * Math.sin(rad)
   };
 }
 
-export function clamp(
+export function describeArc(
+  cx: number,
+  cy: number,
+  radius: number,
+  startAngle: number,
+  endAngle: number
+): string {
+
+  const start = polarToCartesian(cx, cy, radius, endAngle);
+  const end = polarToCartesian(cx, cy, radius, startAngle);
+
+  const largeArcFlag =
+    endAngle - startAngle <= 180 ? 0 : 1;
+
+  return `
+    M ${start.x} ${start.y}
+    A ${radius} ${radius}
+      0
+      ${largeArcFlag}
+      0
+      ${end.x}
+      ${end.y}
+  `;
+}
+
+export function temperatureToAngle(
   value: number,
-  min: number,
-  max: number
+  minTemp: number,
+  maxTemp: number,
+  startAngle: number,
+  endAngle: number
 ): number {
 
-  return Math.min(
-    max,
-    Math.max(min, value)
+  const percent =
+    (value - minTemp) /
+    (maxTemp - minTemp);
+
+  return (
+    startAngle +
+    percent *
+    (endAngle - startAngle)
+  );
+}
+
+export function angleToTemperature(
+  angle: number,
+  minTemp: number,
+  maxTemp: number,
+  startAngle: number,
+  endAngle: number
+): number {
+
+  const percent =
+    (angle - startAngle) /
+    (endAngle - startAngle);
+
+  return (
+    minTemp +
+    percent *
+    (maxTemp - minTemp)
   );
 }
