@@ -79,7 +79,7 @@ export class ThermostatHorseshoeCard extends LitElement {
       END_ANGLE
     );
 
-    const activePath = this.describeArc(
+    const activePath = describeArc(
       CENTER_X,
       CENTER_Y,
       RADIUS,
